@@ -1,0 +1,76 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="login">
+    <!-- Navbar Start-->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand login-header" href="https://iti.gov.eg/iti/home">
+                <img class="login-header-logo" src="~/Source/images/ITI logo1.png">
+                <h4 class="login-header-title">Information Technology<br> Institute</h4>
+            </a>
+        </nav>
+    </div>
+    <!-- Navbar End-->
+    <!--MAIN-->
+    <div class="main">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="~/Source/images/ITI-building.svg" alt="">
+                </div>
+                <div class="login-form d-flex flex-column col-sm-12 col-md-6 col-lg-5">
+                    <form id="account" asp-controller="Account" asp-action="Login" method="post">
+                        <!-- Return URL -->
+                        <input type="hidden" asp-for="returnUrl" />
+                        <h1 class="login-form-title mb-3 text-center">Welcome to ITI job portal</h1>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text border-bottom-0"><i class="fas fa-user"></i></div>
+                            </div>
+                            <input type="text" asp-for="email" autocomplete="off" class="form-control login-form-input border-bottom-0" placeholder="Email" id="Email" name="Email">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            <input type="password" asp-for="password" autocomplete="off" class="form-control login-form-input" placeholder="Password" id="Password" name="Password">
+                        </div>
+                        <div class="form-group d-flex justify-content-between flex-wrap mb-2 check">
+                            <div class="form-check form-check-inline">
+                                <input asp-for="loginType" class="form-check-input custom-control-input" type="radio" name="loginType" id="inlineRadio1" value="itian" checked>
+                                <label class="form-check-label custom-control-label" for="inlineRadio1">Itian</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input custom-control-input" type="radio" name="loginType" id="inlineRadio2" value="company">
+                                <label class="form-check-label custom-control-label" for="inlineRadio2">Company</label>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-between flex-wrap mb-2 check">
+                            <div class="custom-control custom-checkbox">
+                                <input asp-for="rememberMe" type="checkbox" class="custom-control-input" data-val="true" id="RememberMe" name="RememberMe" value="true">
+                                <label class="custom-control-label text-muted" for="RememberMe">Remember Me</label>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn rounded-pill login-form-btn text-white mb-2">Login</button>
+                            <a class="btn rounded-pill login-form-btn bg-light-blue text-dark" asp-controller="Account" asp-action="Register">Create Account</a>
+                        </div>
+                    </form>
+                    <!-- Error Alert -->
+                    @if (ViewBag.status != null && ViewBag.status) {
+                         <div id="error-login" class="alert alert-danger alert-dismissible fade show text-center">
+                            <strong>Invalid Email or Password</strong> 
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

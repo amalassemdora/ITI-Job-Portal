@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Member";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/Group.css" />
+}
+
+<div class="container editProfile-page" id="forLanding">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card groupSideBar">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="/Group/Index/@ViewBag.groupId">Group posts</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="/Group/Member/@ViewBag.groupId">Group Members</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="container">
+                <div class="row">
+                    @foreach(var member in ViewBag.groupMembers){
+                    <div class="col-lg-6">
+                        <div class="card m-2">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        @if(member.User.Image != null){
+                                            <img class="group-member-profile-pic"
+                                                 src="~/Attachments/Images/@member.User.Image"
+                                                 alt="profile-pic" />
+                                        }else{
+                                            <img class="group-member-profile-pic"
+                                                 src="~/Source/images/profile.jpg"
+                                                 alt="profile-pic" />
+                                        }
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h5 class="card-title align-self-center">
+                                            <a href="/User/Profile/@member.User.UserId" class="link-dark text-decoration-none"><h5>@member.User.Username</h5></a>
+                                        </h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Member</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>
+
+<script src="~/Source/js/GroupScript.js"></script>

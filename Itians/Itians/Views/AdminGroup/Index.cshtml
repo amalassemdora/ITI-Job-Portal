@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Control - Groups";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<div class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser" tabindex="-1" aria-disabled="true">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany" tabindex="-1" aria-disabled="true">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="card-body job-body">
+                <h3>Groups</h3>
+                <!-- add New group -->
+                <a class="btn-outline-primary p-1" href="AddGroup.html">Add New Group</a>
+                <table class="table  ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Group)
+                        {
+                            <tr>
+                                <th scope="row">@item.GroupName </th>
+                                <td>
+                                    <a asp-action="edit" asp-controller="AdminGroup" asp-route-id="@item.GroupId" class="link-admin"><i class="fas fa-pencil-alt"></i></a>
+                                    <a asp-action="delete" asp-controller="AdminGroup" asp-route-id="@item.GroupId" class="link-admin"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

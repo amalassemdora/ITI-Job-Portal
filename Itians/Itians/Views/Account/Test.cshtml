@@ -1,0 +1,21 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h1>Test</h1>
+
+@foreach (var post in Model.Posts)
+{
+    <h3> @post.Body </h3>
+    <h3> @post.CreatedAt </h3>
+    <h3> @post.Author.Email </h3>
+    foreach (var comment in post.Comments)
+    {
+        <h3> @comment.Body </h3>
+        <h3> @comment.CreatedAt </h3>
+        <h3> @comment.UserId </h3>
+    }
+}
+
+@User.Claims.SingleOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier).Value;

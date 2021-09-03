@@ -1,0 +1,77 @@
+﻿@model EditUsers
+@{
+    ViewData["Title"] = "AddExperience";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS
+{
+    <link rel="stylesheet" href="~/Source/css/EditUserAndCompanyProfileStyle.css" />
+}
+
+<div class="container editProfile-page" id="forLanding">
+    <div class="row justify-content-around">
+        <div class="col-lg-8">
+            <div class="card mb-3">
+                <form asp-action="AddExperience" method="POST">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.id" />
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">Experience</h5>
+                        <div>
+                            <div class="mb-3">
+                                <label for="positionField">Position</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="positionField"
+                                       placeholder="Full Stack Developer"
+                                       asp-for="Position" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="companyField">Company</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="positionField"
+                                       placeholder="Apple Inc."
+                                       asp-for="CompanyName" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="experienceAddressField">Address</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="experienceAddressField"
+                                       placeholder="Cairo, Egypt"
+                                       asp-for="LocationCity" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="experience_description">Job Description</label>
+                                <textarea class="form-control"
+                                          id="experience_description" name="Description"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="experience_fromDate">From</label>
+                                <input class="form-control"
+                                       type="date" min="1997-01-01" max="2030-12-31"
+                                       name="StartingDate"
+                                       id="experience_fromDate" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="experience_toDate">to</label>
+                                <input class="form-control"
+                                       type="date" min="1997-01-01" max="2030-12-31"
+                                       name="EndingDate"
+                                       id="experience_toDate" />
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                        <input type="reset"
+                               class="btn btn-outline-danger"
+                               value="Reset"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>

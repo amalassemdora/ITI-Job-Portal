@@ -1,0 +1,205 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="login">
+    <!-- Navbar Start-->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand login-header" href="https://iti.gov.eg/iti/home">
+                <img class="login-header-logo" src="~/Source/images/ITI logo1.png">
+                <h4 class="login-header-title">Information Technology<br> Institute</h4>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Navbar End-->
+    <!--MAIN-->
+    <div class="main">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="~/Source/images/ITI-building.svg" alt="">
+                </div>
+                <div class="login-form d-flex flex-column col-sm-12 col-md-6 col-lg-5">
+                    <h1 class="login-form-title mb-3 text-center">Welcome</h1>
+                    <div class="text-secondary text-center mb-3">To keep connected with us please register to our website</div>
+                    <div class="form-group d-flex justify-content-between flex-wrap mb-2 check">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input custom-control-input" type="radio" data-divid="itian" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                            <label class="form-check-label custom-control-label" for="inlineRadio1">Itian</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input custom-control-input" type="radio" data-divid="company" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label custom-control-label" for="inlineRadio2">Company</label>
+                        </div>
+                    </div>
+                    <div id="itian">
+                        <form id="account" asp-controller="Account" asp-action="Register" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="registerType" value="itian" />
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-ubottom-0"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" asp-for="userName" class="form-control login-form-input" placeholder="Username" id="UserName" />
+                                <span asp-validation-for="userName" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-bottom-0"><i class="fas fa-envelope"></i></div>
+                                </div>
+                                <input type="email" asp-for="email" class="form-control login-form-input" placeholder="Email" required="" data-val="true" data-val-required="The Email field is required." id="Email">
+                                <span asp-validation-for="email" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                </div>
+                                <input type="password" autocomplete="off" asp-for="password" class="form-control login-form-input" placeholder="Password" id="Password">
+                                <span asp-validation-for="password" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                </div>
+                                <input type="password" autocomplete="off" asp-for="confirmPassword" class="form-control login-form-input" placeholder="confirm Password" id="ConfirmPassword">
+                                <span asp-validation-for="confirmPassword" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-bottom-0"><i class="fas fa-id-card"></i></div>
+                                </div>
+                                <input type="text" asp-for="nationalId" class="form-control login-form-input" placeholder="National Id" id="NationalId" name="NationalId" value="">
+                            </div>
+                            <span asp-validation-for="nationalId" class="alert-danger"></span>
+                            <!-- birth of date  -->
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Birth Date</span>
+                                </div>
+                                <input autocomplete="off" asp-for="birthDateOrEstablishDate" class="text" id="BirthDate" placeholder="DD-MM-YYYY" type="date" min="1990-12-17" max="2000-01-01" spellcheck="false" value="1999-12-17">
+                            </div>
+                            <!-- gender -->
+                            <div class="form-group d-flex flex-wrap mb-2 check">
+                                <div class="form-check form-check-inline px-4">
+                                    <input class="form-check-input custom-control-input " asp-for="gender" type="radio" name="gender" id="exampleRadios1" value="Male" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input custom-control-input" type="radio" name="gender" id="exampleRadios2" value="Female">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Group Types -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="GroupType">Group Type</label>
+                                </div>
+                                <select asp-for="groupTypeId" class="custom-select" id="GroupType">
+                                    <option selected>Choose...</option>
+                                    @foreach (var item in ViewBag.group)
+                                    {
+                                        <option value="@item.GroupId">@item.GroupName</option>
+                                    }
+                                    
+                                </select>
+                            </div>
+                            <!-- Upload license -->
+                            <div class="form-group">
+                                <div class="upload-btn-wrapper">
+                                    <buttons class="btn btnupload">Upload ITI License</buttons>
+                                    <input name="license" type="file" />
+                                    <span asp-validation-for="license"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn rounded-pill login-form-btn text-white mb-2">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="company">
+                        <form id="account" asp-controller="Account" asp-action="Register" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="registerType" value="company">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-bottom-0"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" asp-for="companyUserName" class="form-control login-form-input" placeholder="Company Name" id="ComanyName">
+                                <span asp-validation-for="companyUserName" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-bottom-0"><i class="fas fa-envelope"></i></div>
+                                </div>
+                                <input type="email" asp-for="companyEmail" class="form-control login-form-input" placeholder="Email" id="Email">
+                                <span asp-validation-for="companyEmail" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                </div>
+                                <input type="password" asp-for="password" autocomplete="off" class="form-control login-form-input" placeholder="Password" id="Password">
+                                <span asp-validation-for="password" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                                </div>
+                                <input type="password" autocomplete="off" asp-for="confirmPassword" class="form-control login-form-input" placeholder="confirm Password" id="ConfirmPassword">
+                                <span asp-validation-for="confirmPassword" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text border-bottom-0"><i class="fas fa-globe"></i></div>
+                                </div>
+                                <input type="text" asp-for="companyWebSite" class="form-control login-form-input" placeholder="Comany Website" id="ComanyWebsite">
+                                <span asp-validation-for="companyWebSite" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Establish Date</span>
+                                </div>
+                                <input autocomplete="off" class="text" asp-for="birthDateOrEstablishDate" id="EstablishDate" placeholder="DD-MM-YYYY" type="date" min="1990-12-17" max="2000-01-01" spellcheck="false" value="1999-12-17">
+                                <span asp-validation-for="birthDateOrEstablishDate" class="alert-danger"></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="CompanyTypes">Company Type</label>
+                                </div>
+                                <select asp-for="companyTypeId" class="custom-select" id="CompanyTypes">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Government</option>
+                                    <option value="2">Startup</option>
+                                    <option value="3">Multi National</option>
+                                    <option value="4">international</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="companyTypeId" class="alert-danger"></span>
+
+                            <div class="form-group">
+                                <div class="upload-btn-wrapper">
+                                    <buttons class="btn btnupload">Upload ITI License</buttons>
+                                    <input name="license" type="file" />
+                                    <span asp-validation-for="license"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn rounded-pill login-form-btn text-white mb-2">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="~/Source/js/main.js"></script>

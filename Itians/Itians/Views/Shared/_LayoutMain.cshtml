@@ -1,0 +1,120 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />*@
+    <!-- Add icon in the title bar -->
+    <link rel="icon" href="~/Source/images/iti-logo.png" type="image/x-icon">
+    <!-- Font awesome library -->
+    <link rel="stylesheet" href="~/Source/css/all.min.css" />
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="~/Source/css/NavBarStyle.css" />
+    <!-- Styles Load HERE-->
+    @await RenderSectionAsync("CSS", required: false)
+</head>
+
+<body>
+    <div class="container">
+        <nav class="
+          navbar
+          fixed-top
+          navbar-expand-lg navbar-light
+          bg-light
+          navigation-bar
+        ">
+            <div class="container">
+                <a class="navbar-brand" href="/"><img class="logo" src="~/Source/images/iti-logo.png"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex nav-search">
+                        <input id="search-input" name="searchStr" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button asp-action="Search" asp-controller="User" asp-route-userName="searchStr" id="search-userff" class="btn btn-outline-secondary">Search</button>
+                    </form>
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        @if (User.Claims.First(c => c.Type == ClaimTypes.Role).Value != "4")
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link" aria-current="page" href="/User/Profile/@int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value)"><i id="font-icon" class="fas fa-home"><h6>Profile</h6></i></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link" aria-current="page" href="/Companies/Details/@int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value)"><i id="font-icon" class="fas fa-home"><h6>Profile</h6></i></a>
+                            </li>
+                        }
+                        @if (User.Claims.First(c => c.Type == ClaimTypes.Role).Value != "4")
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link" href="/Group/Index/@int.Parse(User.Claims.First(c => c.Type == ClaimTypes.GroupSid).Value)"><i class="fas fa-users"><h6>My Group</h6></i></a>
+                            </li>
+                        }
+                        <li class="nav-item item">
+                            <a class="nav-link" href="/Jobs/ShowAllJobs"><i id="font-icon" class="fas fa-briefcase"><h6>Jobs</h6></i></a>
+                        </li>
+                        <li class="nav-item item">
+                            <a class="nav-link " href="/AboutUs/Index"><i class="fas fa-info-circle"><h6>About Us</h6></i></a>
+                        </li>
+                        <li class="nav-item item">
+                            <a class="nav-link" href="/ContactUs/Index"><i class="fas fa-address-card"><h6>Contact Us</h6></i></a>
+                        </li>
+                        @if (User.IsInRole("1"))
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link active" href="/AdminApproveUser/Index"><i id="font-icon" class="fas fa-users-cog"><h6>Control</h6></i></a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("4"))
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link" href="/EditCompany/ShowEditCompany"><i class="fas fa-edit"><h6>Edit Profile</h6></i></a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item item">
+                                <a class="nav-link" href="/EditProfile/EditProfile"><i class="fas fa-edit"><h6>Edit Profile</h6></i></a>
+                            </li>
+                        }
+
+
+
+                        <li class="nav-item item">
+                            <a class="nav-link" href="/Account/SignOut"><i class="fas fa-sign-out-alt"><h6>Sign Out</h6></i></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <!-- You Can add Your View HERE -->
+    @RenderBody()
+    <footer></footer>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Title"] = @ViewBag.company.CompanyUsername;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/CompanyProfileStyle.css" />
+}
+<style>
+    @@media only screen and (max-width: 490px) {
+        .myLocation span {
+            font-size: 10px !important;
+        }
+
+        .myLocation input {
+            font-size: 10px !important;
+        }
+    }
+
+    @@media only screen and (max-width: 400px) {
+        .myLocation span {
+            font-size: 5px !important;
+            color: red !important;
+        }
+
+        .myLocation input {
+            font-size: 5px !important;
+        }
+    }
+</style>
+<div class="profile-page">
+    <div class="container-fluid px-0">
+        @if (ViewBag.company.Cover == null)
+        {
+            <img class="img-fluid profile-cover"
+                 src="~/Source/images/profile-cover.jpg"
+                 alt="profile cover" />
+        }
+        else
+        {
+            <img class="img-fluid profile-cover"
+                 src="~/Attachments/Covers/@ViewBag.company.Cover"
+                 alt="profile cover" />
+        }
+    </div>
+    <div class="container mt-5">
+        <div class="profile-info">
+            <div class="container nameAndPic">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            @if (ViewBag.company.Image == null)
+                            {
+                                <img class="profile-pic-company border border-dark"
+                                     src="~/Source/images/profile.jpg"
+                                     alt="profile-pic" />
+                            }
+                            else
+                            {
+                                <img class="profile-pic-company border border-dark"
+                                     src="~/Attachments/Images/@ViewBag.company.Image"
+                                     alt="profile-pic" />
+                            }
+                            <h2 class="align-self-center ms-md-4 text-light">
+                                @ViewBag.company.CompanyUsername
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container company-page" id="forLanding">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="company-information">
+                <div class="row information">
+                    <div>
+                        <h3 class="border-bottom">Contact Information</h3>
+                        <h5>
+                            <i class="fas fa-globe-africa fa-2x contact-icons"></i>
+                            <a href="@ViewBag.company.WebsiteUrl">Our Site</a>
+                        </h5>
+                        <h5>
+                            <i class="fas fa-envelope-square fa-2x contact-icons"></i>
+                            <a href="mailto:@ViewBag.company.Email" class="link-primary">Send Mail</a>
+                        </h5>
+                        <h5>
+                            <i class="fas fa-map-marked fa-2x me-2 contact-icons"></i>@ViewBag.company.Adress
+                        </h5>
+                    </div>
+                    <br />
+                    <div style="margin-top: 20px;">
+                        <h3 class="border-bottom">About Us</h3>
+                        <h6 class="text-secondary">Establish Date: @ViewBag.company.EstablishDate</h6>
+                        <p>
+                            @ViewBag.company.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="insert-job">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <input id="jobpost-author" type="hidden" value="@ViewBag.company.CompanyId" />
+                        <div class="mb-3">
+                            <label for="jobTitle" class="form-label">Job Title</label>
+                            <input type="text" class="form-control" id="jobTitle" placeholder="Full Stack Developer">
+                        </div>
+                        <div class="mb-3">
+                            <label for="jobDescription" class="form-label">Job Description</label>
+                            <textarea class="form-control" id="jobDescription" rows="4"></textarea>
+                        </div>
+                        <label for="jobType" class="form-label">Job Type</label>
+                        <select id="jobType" class="form-select" aria-label="Default select example">
+                            @foreach (var item in ViewBag.jobtype)
+                            {
+                                <option value="@item.JobTypeId">@item.JobType1</option>
+                            }
+                        </select>
+                        <div class="input-group mt-3 myLocation">
+                            <span class="input-group-text">Job Location</span>
+                            <input id="jobstreet" type="text" aria-label="street" class="form-control" placeholder="Street">
+                            <input id="jobcity" type="text" aria-label="Last name" class="form-control" placeholder="City">
+                            <input id="jobstate" type="text" aria-label="Last name" class="form-control" placeholder="State">
+                            <input id="jobcountry" type="text" aria-label="Last name" class="form-control" placeholder="Country">
+                            <input id="jobzipcode" type="text" aria-label="Last name" class="form-control" placeholder="Zip Code">
+                        </div>
+                        <div class="d-flex flex-row-reverse">
+                            <button id="jobpost-submit" class="btn btn-outline-success mt-3">Post Job</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="Jobs-main">
+
+                @* All jobPosts here *@
+                <div id="jobpost-section">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="~/Source/js/UserProfileScript.js"></script>
+
+@section Scripts{
+    <script>
+        $("#jobpost-submit").on("click", function () {
+
+            let id = $("#jobpost-author").val() + "~~" + encodeURIComponent($("#jobDescription").val())
+                + "~~" + encodeURIComponent($("#jobTitle").val()) + "~~" + encodeURIComponent($("#jobType").val())
+                + "~~" + encodeURIComponent($("#jobstreet").val()) + "~~" + encodeURIComponent($("#jobcity").val())
+                + "~~" + encodeURIComponent($("#jobstate").val()) + "~~" + encodeURIComponent($("#jobcountry").val())
+                + "~~" + encodeURIComponent($("#jobzipcode").val());
+            $("#jobpost-section").load("/Companies/jobPost/" + id);
+            $("#jobDescription").val("");
+            $("#jobTitle").val("");
+            $("#jobType").val("");
+            $("#jobstreet").val("");
+            $("#jobcity").val("");
+            $("#jobstate").val("");
+            $("#jobcountry").val("");
+            $("#jobzipcode").val("");
+        });
+        $(window).on("load", function () {
+            let id = $("#jobpost-author").val();
+            $("#jobpost-section").load("/Companies/jobPost/" + id);
+        });
+    </script>
+}
+
+

@@ -1,0 +1,14 @@
+.goUp {
+    position: fixed;
+    bottom: 10px;
+    right: -50px;
+    transition: all ease-in 0.5s;
+}
+
+.goUpShow {
+    right: 10px;
+}
+/*edit profile*/
+.editProfile-page {
+    margin-top: 6rem !important;
+}

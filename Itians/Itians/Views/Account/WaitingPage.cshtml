@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "WaitingPage";
+
+}
+
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-body job-body">
+
+                <h3>Waiting Page</h3>
+                <form method="post">
+                    <table class="table">
+                        <tbody>
+
+                            @if (ViewBag.company != null)
+                            {
+                                <tr>
+                                    <th scope="row"><label class="text-nowrap">ComapnyName :</label></th>
+                                    <td><input readonly class="form-control" type="text" value="@ViewBag.company.CompanyUsername"></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row"><label class="text-nowrap">UserName :</label></th>
+                                    <td><input readonly class="form-control" type="text" value="@ViewBag.user.Username"></td>
+                                </tr>
+                            }
+
+
+                            @if (ViewBag.company != null)
+                            {
+                                <tr>
+                                    <th scope="row"><label>Email: </label> </th>
+                                    <td><input readonly class="form-control" type="text" value="@ViewBag.company.Email"></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row"><label>Email: </label> </th>
+                                    <td><input readonly class="form-control" type="text" value="@ViewBag.user.Email"></td>
+                                </tr>
+                            }
+
+
+
+                            @if (ViewBag.company != null)
+                            {
+                                <tr>
+                                    <th scope="row"><label>License:</label> </th>
+                                    <td><embed src="~/Attachments/Licenses/@ViewBag.company.License" width="800px" height="1080px" /> </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <th scope="row"><label>License:</label> </th>
+                                    <td><embed src="~/Attachments/Licenses/@ViewBag.user.License" width="800px" height="1080px" /> </td>
+                                </tr>
+                            }
+
+                            @if (ViewBag.company != null)
+                            {
+                               
+                                    <tr>
+                                        <th scope="row"><label>Comment:</label> </th>
+                                        <td><textarea readonly type="text" id="Comment" cols="83" rows="4"> @ViewBag.company.CommentFromAdmin </textarea></td>
+                                    </tr>
+                           
+
+                            }
+                            else
+                            {
+                            
+                        <tr>
+                            <th scope="row"><label>Comment:</label> </th>
+                            <td><textarea readonly type="text" id="Comment" cols="83" rows="4">@ViewBag.user.CommentFromAdmin</textarea></td>
+                        </tr>
+                           
+                                
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+

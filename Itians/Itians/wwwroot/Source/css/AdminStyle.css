@@ -1,0 +1,197 @@
+    body {
+        background-color: rgb(243 242 239);
+        font-size: 15px;
+    }
+    /* Nav bar */
+    
+    .navigation-bar {
+        opacity: 90%;
+    }
+    
+    .profile-pic {
+        border-radius: 50%;
+        width: 50px;
+    }
+    
+    .logo {
+        height: 3rem;
+    }
+    
+    .navigation-bar {
+        opacity: 90%;
+    }
+    
+    ul li a.active {
+        color: black;
+    }
+    
+    .profile-pic {
+        border-radius: 50%;
+        width: 50px;
+    }
+    
+    .profile-cover {
+        height: 300px;
+        width: 100%;
+    }
+    
+    .profile-pic2 {
+        border-radius: 50%;
+        width: 200px;
+    }
+    
+    .dropdown-menu {
+        right: 0;
+    }
+    
+    .nameAndPic {
+        position: absolute;
+        top: 168px;
+        width: auto;
+    }
+    
+    .information {
+        margin-top: 5rem !important;
+    }
+    
+    .contact-icons {
+        position: relative;
+        top: 10px;
+    }
+    
+    .company-page {
+        position: relative;
+    }
+    /* End Nav bar */
+    /* subNav */
+    /* Start jobs */
+    
+    .Jobs-main {
+        margin-top: 120px;
+    }
+    
+    .Jobs-main {
+        font-size: 15px;
+    }
+    
+    .Jobs-main h3 {
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .Jobs-main .job-card {
+        display: inline-block;
+    }
+    /* Job Body */
+    /* Header Card*/
+    
+    .header-main {
+        margin-top: 74px;
+        position: absolute;
+    }
+    /* End Header */
+    
+    .Jobs-main .job-body {
+        width: 80%;
+        background-color: white;
+        padding: 25px;
+        margin: 10px auto;
+    }
+    
+    .card-job {
+        border: 0px;
+        border-bottom: 1px solid rgb(136, 135, 135);
+    }
+    
+    .Jobs-main .job-body .card-body a {
+        text-decoration: none;
+    }
+    
+    .Jobs-main .job-body .card-body a:hover {
+        border-bottom: 1px solid rgb(46, 25, 236);
+    }
+    /* END Job Body */
+    /* End Jobs */
+    /*Admin*/
+    
+    .link-admin {
+        color: black;
+    }
+    
+    .link-admin:hover {
+        color: blue;
+    }
+    /*Media Query*/
+    /* Extra small devices (phones, 600px and down) */
+    
+    @media only screen and (max-width: 600px) {
+        #font-icon {
+            display: none;
+        }
+        #nav-pic {
+            display: none;
+        }
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    
+    @media only screen and (min-width: 600px) {
+        nav i {
+            font-size: 0px;
+        }
+        #nav-pic {
+            display: none;
+        }
+    }
+    /* Medium devices (landscape tablets, 768px and up) */
+    
+    @media only screen and (min-width: 768px) {
+        /* Nav */
+        nav i {
+            font-size: 0px;
+        }
+        #nav-pic {
+            display: inline-block;
+        }
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    
+    @media only screen and (min-width: 992px) {
+        /* Nav */
+        nav i {
+            font-size: 15px;
+            text-align: center;
+        }
+        nav h6 {
+            font-size: 13px;
+        }
+        nav .item {
+            margin-left: 10px;
+        }
+        #nav-pic {
+            display: inline-block;
+        }
+        .sub-nav {
+            width: 65%;
+        }
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    
+    @media only screen and (min-width: 1200px) {
+        /* Nav */
+        nav i {
+            font-size: 20px;
+            text-align: center;
+        }
+        nav h6 {
+            font-size: 15px;
+        }
+        nav .item {
+            margin-left: 25px;
+        }
+        #nav-pic {
+            display: inline-block;
+        }
+        .sub-nav {
+            width: 64%;
+        }
+    }

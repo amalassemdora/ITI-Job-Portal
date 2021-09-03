@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(243 242 239);
+    font-size: 15px;
+}
+
+
+/* Start Network*/
+
+.network-main {
+    margin-top: 120px;
+}
+
+.network-main {
+    font-size: 15px;
+}
+
+.network-main h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.network-main .network-card {
+    display: inline-block;
+}
+
+
+/* network Body */
+
+.network-main .network-body {
+    width: 80%;
+    background-color: white;
+    padding: 25px;
+   
+}
+.network-body {
+    margin: 10px auto;
+}
+.card-network {
+    border: 0px;
+    border-bottom: 1px solid rgb(136, 135, 135);
+}
+
+.network-main .network-body .card-body {
+    padding: 20px;
+}
+
+.network-main .network-body .card-body a {
+    text-decoration: none;
+    color: rgb(29, 117, 158);
+}
+
+.network-main .network-body .card-body a:hover {
+    color: rgb(63, 15, 235);
+    border-bottom: 1px solid rgb(46, 25, 236);
+}
+
+.img-about {
+    border-radius: 50%;
+    padding: 20px;
+    height: 200px;
+    width: 200px;
+    margin: 0px auto;
+}
+.img-network {
+    border-radius: 50%;
+    padding: 20px;
+    height: 100px;
+    width: 100px;
+    margin: 0px auto;
+}
+
+.card-about {
+    margin: 10px auto;
+}
+
+
+
+/* END network Body */
+
+
+/* End network */

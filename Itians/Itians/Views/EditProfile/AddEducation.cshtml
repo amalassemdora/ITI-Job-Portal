@@ -1,0 +1,90 @@
+﻿@model EditUsers
+@{
+    ViewData["Title"] = "AddEducation";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS
+{
+    <link rel="stylesheet" href="~/Source/css/EditUserAndCompanyProfileStyle.css" />
+}
+
+<div class="container editProfile-page" id="forLanding">
+    <div class="row justify-content-around">
+        <div class="col-lg-8">
+            <div class="card mb-3">
+                <form asp-action="AddEducation" method="POST">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.id" />
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">Education</h5>
+                        <div>
+
+                            <div class="mb-3">
+                                <label for="universityField">University</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="universityField"
+                                       placeholder="Cairo University"
+                                       asp-for="Universty" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="facultyField">Faculty</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="facultyField"
+                                       placeholder="Faculty Of Science"
+                                       asp-for="CertificateDegree" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="deptField">Department</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="deptField"
+                                       placeholder="Computer Sciences"
+                                       asp-for="Major" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="education_fromDate">From</label>
+                                <input class="form-control"
+                                       type="date" min="1997-01-01" max="2030-12-31"
+                                       name="StartingDate"
+                                       id="education_fromDate" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="experience_toDate">to</label>
+                                <input class="form-control"
+                                       type="date"
+                                       name="EndingDate"
+                                       id="education_toDate" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="gpaField">GPA</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="gpaField"
+                                       placeholder="3.5"
+                                       asp-for="Gpa" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="percentageField">percentage</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="percentageField"
+                                       placeholder="90%"
+                                       asp-for="Percentage" />
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                        <input type="reset"
+                               class="btn btn-outline-danger"
+                               value="Reset" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>

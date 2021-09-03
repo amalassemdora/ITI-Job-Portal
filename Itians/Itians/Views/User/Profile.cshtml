@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewData["Title"] = @ViewBag.user.Username;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/UserProfileStyle.css"/> 
+}
+
+<div class="profile-page">
+    <div class="container-fluid px-0">
+        @* Add Profile pic if exist *@
+        @if (ViewBag.user.Cover == null)
+        {
+            <img class="img-fluid profile-cover"
+                 src="~/Source/images/profile-cover.jpg"
+                 alt="profile cover" />
+        }
+        else
+        {
+            <img class="img-fluid profile-cover"
+                 src="~/Attachments/Covers/@ViewBag.user.Cover"
+                 alt="profile cover" />
+        }
+    </div>
+    <div class="container mt-5">
+        <div class="profile-info">
+            <div class="container nameAndPic">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            @* Add Profile pic if exist *@
+                            @if (ViewBag.user.Image == null)
+                            {
+                                <img class="profile-pic border border-dark"
+                                     src="~/Source/images/profile.jpg"
+                                     alt="profile-pic" />
+                            }
+                            else
+                            {
+                                <img class="profile-pic border border-dark"
+                                     src="~/Attachments/Images/@ViewBag.user.Image"
+                                     alt="profile-pic" />
+                            }
+                        <h2 class="align-self-center ms-md-4 text-light">
+                            @ViewBag.user.Username
+                        </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container company-page" id="forLanding">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="company-information mt-5">
+                <div class="row information">
+                    <div>
+                        <h3 class="border-bottom">Contact Information</h3>
+                        @if (ViewBag.user.UserProfile.FormalEmail != null)
+                        {
+                            <h5>
+                                <i class="fas fa-envelope-square fa-2x contact-icons"></i>
+                                <a href="mailto:@ViewBag.user.UserProfile.FormalEmail"
+                                   class="link-primary">@ViewBag.user.Username</a>
+                            </h5>
+                        }
+                        @if (ViewBag.user.UserProfile.Linkedin != null)
+                        {
+                            <h5>
+                                <i class="fab fa-linkedin fa-2x me-2 contact-icons"></i><a class="link-dark"
+                                    href="@ViewBag.user.UserProfile.Linkedin">@ViewBag.user.Username</a>
+                            </h5>
+                        }
+                        @if (ViewBag.user.UserProfile.Github != null)
+                        {
+                            <h5>
+                                <i class="fab fa-github-square fa-2x me-2 contact-icons"></i><a class="link-dark"
+                                                                                                href="@ViewBag.user.UserProfile.Github">@ViewBag.user.Username</a>
+                            </h5>
+                        }
+                    </div>
+                    <div>
+                        <h3 class="border-bottom">About Me</h3>
+                        <p>
+                            @ViewBag.user.UserProfile.AboutMe
+                        </p>
+                        @if (ViewBag.user.UserProfile.Cv != null)
+                        {
+                            <a href="/User/DownloadCv/@ViewBag.user.UserProfile.Cv" class="btn btn-danger">Download CV</a>
+                        }
+                    </div>
+                    <div>
+                        <h3 class="border-bottom">Salary Information</h3>
+                        <ul>
+                            @if (@ViewBag.user.UserProfile.CurrrentSalary != null)
+                            {
+                                <li>Current Salary: @ViewBag.user.UserProfile.CurrrentSalary 
+                            
+                            
+                            @if (ViewBag.user.UserProfile.Currency == "1")
+                            {
+                                <span> LE </span>
+                            }
+                            else if (ViewBag.user.UserProfile.Currency == "2")
+                            {
+                                <span> USD </span>
+                            }
+
+                                </li>
+                            }
+                            @* User Salary *@
+                            @if (ViewBag.user.UserProfile.CurrrentSalary != null)
+                            {
+                                if (ViewBag.user.UserProfile.IsYearlyMonthly)
+                                {
+                                    <li>Monthly</li>
+                                }
+                                else
+                                {
+                                    <li>Yearly</li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="border-bottom">Experience</h3>
+                        @* Experience *@
+                        @foreach (var experience in ViewBag.user.UserProfile.UserExperiences)
+                        {
+                            <div class="experience mt-3">
+                                <div class="d-flex">
+                                    <h4> @experience.Position </h4>
+                                    <h6 class="text-secondary lh-lg ms-2">at @experience.CompanyName</h6>
+                                </div>
+                                <p>
+                                    @experience.Description
+                                </p>
+                                <div class="d-flex flex-column flex-lg-column align-items-lg-center">
+                                    <div class="border border-danger text-danger p-2 rounded m-2">
+                                        From : @experience.StartingDate.ToString("dd/MM/yyyy") To : @experience.EndingDate.ToString("dd/MM/yyyy")
+                                    </div>
+                                    <div class="border border-danger text-danger p-2 rounded m-2">
+                                        @experience.LocationCountry , @experience.LocationState , @experience.LocationCity
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        <h3 class="border-bottom">Education</h3>
+                        @* Education *@
+                        @foreach (var education in ViewBag.user.UserProfile.UserEducations)
+                        {
+                            <div class="education mt-3">
+                                <div class="d-flex">
+                                    <h4>@education.Universty</h4>
+                                    <h6 class="text-secondary lh-lg ms-2">, @education.Major</h6>
+                                </div>
+                                <p>
+                                    @education.CertificateDegree
+                                </p>
+                                <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                                    <div class="border border-danger text-danger p-2 rounded m-2">
+                                        GPA:@education.Gpa
+                                    </div>
+                                    <div class="border border-danger text-danger p-2 rounded m-2">
+                                        Percentage:@education.Percentage
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <span class="border border-danger text-danger p-2 rounded m-2">From : @education.StartingDate.ToString("dd/MM/yyyy") To : @education.EndingDate.ToString("dd/MM/yyyy")</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <input id="post-author" type="hidden" value="@ViewBag.user.UserId" />
+            @if (ViewBag.user.UserId == int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value))
+            {
+                <div id="post-area">
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <div>
+                                <textarea id="post-body" class="form-control" rows="4" placeholder="What's on your mind, Name?"></textarea>
+                            </div>
+                            <div class="d-flex flex-row-reverse">
+                                <button id="post-submit" class="btn btn-outline-success mt-3">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="posts">
+                @* All Posts here *@
+                <div id="post-section">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>
+<script src="~/Source/js/UserProfileScript.js"></script>
+
+@section Scripts{ 
+    <script>
+    $("#post-submit").on("click", function () {
+        // Check Text Area first
+        if ($("#post-body").val().trim() != "") {
+            if ($("#post-submit").html() == "Edit") {
+                $.get("/User/EditPost", { id: $("#carry-edit-post").val(), body: $("#post-body").val() }, function () {
+                    /*alert("Post successfully Edit ^_^");*/
+                    $("#post-body").val("");
+                    $("#post-submit").html("Post");
+                    let id = $("#post-author").val();
+                    $("#post-section").load("/User/LoadPost/" + id);
+                });
+            } else {
+                let id = $("#post-author").val();
+                $.get("/User/AddPost", { authorId:id , body: $("#post-body").val() }, function () {
+                    $("#post-section").load("/User/LoadPost/" + id);
+                    $("#post-body").val("");
+                });
+            }
+        } else {
+            $("#post-body").val("");
+            $("#post-body").focus();
+        }
+
+    });
+    $(window).on("load", function () {
+        let id = $("#post-author").val();
+        $("#post-section").load("/User/LoadPost/" + id);
+    });
+    </script>
+}
+

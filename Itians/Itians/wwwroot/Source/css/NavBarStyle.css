@@ -1,0 +1,108 @@
+body {
+    background-color: rgb(243 242 239);
+    font-size: 15px;
+}
+/* Nav bar */
+    
+.navigation-bar {
+    opacity: 90%;
+}
+
+.navbar-profile-pic {
+    object-fit: cover;
+    height: 53px;
+    border-radius: 50%;
+    width: 50px;
+}
+    
+.logo {
+    height: 3rem;
+}
+    
+.navigation-bar {
+    opacity: 90%;
+}
+    
+.nav-link:active {
+    color: black;
+}
+    
+.dropdown-menu {
+    right: 0;
+}
+    
+/* End Nav bar */
+/*Media Query*/
+/* Extra small devices (phones, 600px and down) */
+    
+@media only screen and (max-width: 600px) {
+    #font-icon {
+        display: none;
+    }
+    #nav-pic {
+        display: none;
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+    
+@media only screen and (min-width: 600px) {
+    nav i {
+        font-size: 0px;
+    }
+    #nav-pic {
+        display: none;
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+    
+@media only screen and (min-width: 768px) {
+    /* Nav */
+    nav i {
+        font-size: 0px;
+    }
+    #nav-pic {
+        display: inline-block;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+    
+@media only screen and (min-width: 992px) {
+    /* Nav */
+    nav i {
+        font-size: 15px;
+        text-align: center;
+    }
+    nav h6 {
+        font-size: 13px;
+    }
+    nav .item {
+        margin-left: 10px;
+    }
+    #nav-pic {
+        display: inline-block;
+    }
+    .sub-nav {
+        width: 65%;
+    }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+    
+@media only screen and (min-width: 1200px) {
+    /* Nav */
+    nav i {
+        font-size: 20px;
+        text-align: center;
+    }
+    nav h6 {
+        font-size: 15px;
+    }
+    nav .item {
+        margin-left: 25px;
+    }
+    #nav-pic {
+        display: inline-block;
+    }
+    .sub-nav {
+        width: 64%;
+    }
+}

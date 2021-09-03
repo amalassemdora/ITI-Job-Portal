@@ -1,0 +1,299 @@
+﻿@model EditUsers
+@{
+    ViewData["Title"] = "EditProfile - "+ViewBag.user.Username;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS
+{
+    <link rel="stylesheet" href="~/Source/css/EditUserAndCompanyProfileStyle.css" />
+}
+
+<div class="container editProfile-page" id="forLanding">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#contact-info">Contact Information</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#about-me">About Me</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#experiences">Experiences</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#educations">Educations</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" asp-action="AddExperience" method="GET">Add Experience</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" asp-action="AddEducation" method="GET">Add Education</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-3" id="contact-info">
+                <form asp-action="SaveContact" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.user.UserId" />
+                    <input type="hidden" asp-for="Username" value="@ViewBag.user.Username" />
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.user.UserProfile.UserId" />
+                    <input type="hidden" asp-for="HiddenCv" value="@ViewBag.user.UserProfile.Cv" />
+                    <input type="hidden" asp-for="HiddenImage" value="@ViewBag.user.Image" />
+                    <input type="hidden" asp-for="HiddenCover" value="@ViewBag.user.Cover" />
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">Contact Information</h5>
+                        <div>
+                            <div class="mb-3">
+                                <label for="emailField" class="form-label">Email address</label>
+                                <input type="email"
+                                       class="form-control"
+                                       id="emailField"
+                                       placeholder="name@example.com" asp-for="FormalEmail" value=@ViewBag.user.UserProfile.FormalEmail />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">https://www.linkedin.com/in/</span>
+                                <input type="text"
+                                       class="form-control"
+                                       id="linkedinField"
+                                       aria-describedby="basic-addon3" asp-for="Linkedin" value=@ViewBag.user.UserProfile.Linkedin />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">https://github.com/</span>
+                                <input type="text"
+                                       class="form-control"
+                                       id="GithubField"
+                                       aria-describedby="basic-addon3" asp-for="Github" value=@ViewBag.user.UserProfile.Github />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="cvFile">Upload New CV</label>
+                                <input name="Cv" type="file" class="form-control" id="cvFile" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="profileFile">Profile Photo</label>
+                                <input name="Image" type="file" class="form-control" id="profileFile" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="coverFile">Profile Cover</label>
+                                <input name="Cover" type="file" class="form-control" id="coverFile" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card mb-3" id="about-me">
+                <form asp-action="SaveAboutme" method="POST">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.user.UserId" />
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">About Me</h5>
+                        <div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="aboutMeField" name="Aboutme">@ViewBag.user.UserProfile.AboutMe</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="salaryField">Salary</label>
+                                <input type="text" class="form-control" id="salaryField" asp-for="CurrrentSalary" value=@ViewBag.user.UserProfile.CurrrentSalary />
+                                <label for="monthly">monthly</label>
+                                @if (ViewBag.user.UserProfile.IsYearlyMonthly == true)
+                                {
+                                    <input type="radio" id="monthly" name="IsYearlyMonthly" value="true" checked="checked" />
+                                    <label for="yearly">yearly</label>
+                                    <input type="radio" name="IsYearlyMonthly" value="false" id="yearly" />
+                                }
+                                else
+                                {
+                                    <input type="radio" name="IsYearlyMonthly" value="true" id="monthly" />
+                                    <label for="yearly">yearly</label>
+                                    <input type="radio" id="yearly" name="IsYearlyMonthly" value="false" checked="checked" />
+                                }
+
+                            </div>
+                            <label for="currency">currency</label>
+                            <select class="form-select mb-3"
+                                    name="currency"
+                                    id="currency" asp-for="Currency">
+                                @if (ViewBag.user.UserProfile.Currency == "1")
+                                {
+                                    <option value="1" selected>LE</option>
+                                    <option value="2">USD</option>
+                                }
+                                else
+                                {
+                                    <option value="1">LE</option>
+                                    <option value="2" selected>USD</option>
+                                }
+
+                            </select>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                    </div>
+                </form>
+            </div>
+            <div id="experiences">
+                <div class="card mb-3">
+                    <form method="POST">
+                        <input type="hidden" asp-for="UserId" value="@ViewBag.user.UserId" />
+                        <input type="hidden" asp-for="ExperienceId" value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.ExperienceId)" />
+
+                        <div class="card-body">
+                            <h5 class="card-title border-bottom">Experience</h5>
+                            <div>
+                                <div class="mb-3">
+                                    <label for="positionField">Position</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="positionField"
+                                           placeholder="Full Stack Developer"
+                                           asp-for="Position"
+                                           value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.Position)" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="companyField">Company</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="positionField"
+                                           placeholder="Apple Inc."
+                                           asp-for="CompanyName"
+                                           value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.CompanyName)" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experienceAddressField">Address</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="experienceAddressField"
+                                           placeholder="Cairo, Egypt"
+                                           asp-for="LocationCity"
+                                           value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.LocationCity)" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience_description">Job Description</label>
+                                    <textarea class="form-control"
+                                              id="experience_description" name="Description">
+                                                @(ViewBag.UserExperience == null?"":ViewBag.UserExperience.Description) 
+                                    </textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience_fromDate">From</label>
+                                    <input class="form-control"
+                                           type="date" min="1997-01-01" max="2030-12-31"
+                                           name="StartingDate"
+                                           id="experience_fromDate"
+                                           value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.StartingDate.ToString("yyyy-MM-dd"))" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience_toDate">to</label>
+                                    <input class="form-control"
+                                           type="date" min="1997-01-01" max="2030-12-31"
+                                           name="EndingDate"
+                                           id="experience_toDate"
+                                           value="@(ViewBag.UserExperience==null?"":ViewBag.UserExperience.EndingDate.ToString("yyyy-MM-dd"))" />
+
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" asp-action="SaveExperience" value="Save" />
+                            <input type="submit" class="btn btn-danger" asp-action="DeleteExperience" value="delete" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="educations">
+                <div class="card mb-3">
+                    <form method="POST">
+                        <input type="hidden" asp-for="UserId" value="@ViewBag.user.UserId" />
+                        <input type="hidden" asp-for="EducationId"
+                               value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.EducationId)" />
+                        <div class="card-body">
+                            <h5 class="card-title border-bottom">Education</h5>
+                            <div>
+
+                                <div class="mb-3">
+                                    <label for="universityField">University</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="universityField"
+                                           placeholder="Cairo University"
+                                           asp-for="Universty"
+                                           value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.Universty)" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="facultyField">Faculty</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="facultyField"
+                                           placeholder="Faculty Of Science"
+                                           asp-for="CertificateDegree"
+                                           value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.CertificateDegree)" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="deptField">Department</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="deptField"
+                                           placeholder="Computer Sciences"
+                                           asp-for="Major"
+                                           value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.Major)" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="education_fromDate">From</label>
+                                    <input class="form-control"
+                                           type="date" min="1997-01-01" max="2030-12-31"
+                                           name="StartingDate"
+                                           id="education_fromDate"
+                                           value="@(ViewBag.userEducation==null?"":ViewBag.userEducation.StartingDate.ToString("yyyy-MM-dd"))" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience_toDate">to</label>
+                                    <input class="form-control"
+                                           type="date"
+                                           name="EndingDate"
+                                           id="education_toDate"
+                                           value="@(ViewBag.userEducation==null?"":ViewBag.userEducation.EndingDate.ToString("yyyy-MM-dd"))" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gpaField">GPA</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="gpaField"
+                                           placeholder="3.5"
+                                           asp-for="Gpa"
+                                           value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.Gpa)" />
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="percentageField">percentage</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="percentageField"
+                                           placeholder="90%"
+                                           asp-for="Percentage"
+                                           value="@(ViewBag.userEducation == null?"":ViewBag.userEducation.Percentage)" />
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" asp-action="SaveEducation" value="Save" />
+                            <input type="submit" class="btn btn-danger" asp-action="DeleteEducation" value="delete" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>

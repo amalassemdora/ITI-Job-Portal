@@ -1,1 +1,0 @@
-The same task in html was way way better but the non perfect stuff was due to our stressful tasks and i apologize for that 

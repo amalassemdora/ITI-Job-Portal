@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/all.min.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav
+        class="
+          navbar
+          fixed-top
+          navbar-expand-lg navbar-light
+          bg-light
+          navigation-bar
+        "
+      >
+        <div class="container">
+          <a class="navbar-brand" href="#"
+            ><img class="logo" src="images/logo.png"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex nav-search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-secondary" type="submit">
+                Search
+              </button>
+            </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item item">
+                <a class="nav-link" aria-current="page" href="#"
+                  ><i id="font-icon" class="fas fa-home"><h6>Home</h6></i></a
+                >
+              </li>
+              <li class="nav-item item">
+                <a class="nav-link active" href="#"
+                  ><i id="font-icon" class="fas fa-briefcase"
+                    ><h6>Jobs</h6></i
+                  ></a
+                >
+              </li>
+              <li class="nav-item item">
+                <a class="nav-link" href="#"
+                  ><i id="font-icon" class="fas fa-comment-dots"
+                    ><h6>Messages</h6></i
+                  ></a
+                >
+              </li>
+              <li class="nav-item item">
+                <a class="nav-link" href="#"
+                  ><i id="font-icon" class="fas fa-user-friends"
+                    ><h6>My Network</h6></i
+                  ></a
+                >
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  id="nav-pic"
+                  class="nav-link"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    class="profile-pic"
+                    src="images/profile.jpg"
+                    alt="profile picture"
+                  />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container editProfile-page" id="forLanding">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card groupSideBar">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a class="nav-link link-primary" href="group.html"
+                  >Group posts</a
+                >
+              </li>
+              <li class="list-group-item">
+                <a class="nav-link link-primary" href="groupMembers.html"
+                  >Group Members</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="insert-job">
+            <div class="card mt-5">
+              <div class="card-body">
+                <form action="" method="post">
+                  <div>
+                    <textarea
+                      class="form-control"
+                      id="jobDescription"
+                      rows="4"
+                      placeholder="What's on your mind, Name?"
+                    ></textarea>
+                  </div>
+                  <div class="d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-outline-success mt-3">
+                      Post
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-3 post">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <img
+                    class="profile-post-pic me-2"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="d-flex flex-column">
+                    <h5 class="mb-0">User Name</h5>
+                    <span class="card-text"
+                      ><small class="text-success"
+                        ><i class="far fa-clock"></i> 8 hours ago</small
+                      ></span
+                    >
+                  </div>
+                </div>
+                <div class="btn-group" role="group">
+                  <button
+                    id="btnGroupDrop1"
+                    type="button"
+                    class="btn btn-light dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><i class="fas fa-edit"></i>Edit</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><i class="fas fa-trash-alt"></i>Delete</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p class="card-text mt-2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                nobis commodi asperiores rem esse sunt, provident sint libero.
+                Dolor deleniti omnis minus. Doloribus dicta eligendi architecto
+                iste voluptate praesentium excepturi.
+              </p>
+              <hr />
+              <a href="#" class="btn btn-outline-success"
+                ><i class="far fa-thumbs-up"></i>Like</a
+              >
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="far fa-comment"></i>Comment
+              </button>
+              <hr />
+              <div class="d-flex">
+                <img
+                  class="profile-post-comment-pic align-self-start me-2"
+                  src="images/profile.jpg"
+                  alt="profile-photo"
+                />
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Your Comment"
+                ></textarea>
+                <div class="p-1">
+                  <a href="#">
+                    <i class="far fa-comment fa-2x"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="comments">
+              <div class="comment mb-3">
+                <div class="d-flex p-2">
+                  <img
+                    class="profile-post-comment-pic align-self-start"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="commented bg-light p-2 mx-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Voluptates reprehenderit quisquam quod reiciendis
+                      suscipit! Quam deserunt commodi, voluptatem ducimus minus
+                      officia nobis molestiae doloribus obcaecati mollitia,
+                      illum eos deleniti consectetur.
+                    </p>
+                  </div>
+                  <div class="p-2">
+                    <a class="link-primary" href="#"
+                      ><i class="far fa-thumbs-up fa-2x"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment mb-3">
+                <div class="d-flex p-2">
+                  <img
+                    class="profile-post-comment-pic align-self-start"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="commented bg-light p-2 mx-2">
+                    <p>Hello this is small comment</p>
+                  </div>
+                  <div class="p-2">
+                    <a class="link-primary" href="#"
+                      ><i class="far fa-thumbs-up fa-2x"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-3 post">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <img
+                    class="profile-post-pic me-2"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="d-flex flex-column">
+                    <h5 class="mb-0">User Name</h5>
+                    <span class="card-text"
+                      ><small class="text-success"
+                        ><i class="far fa-clock"></i> 8 hours ago</small
+                      ></span
+                    >
+                  </div>
+                </div>
+                <div class="btn-group" role="group">
+                  <button
+                    id="btnGroupDrop1"
+                    type="button"
+                    class="btn btn-light dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><i class="fas fa-edit"></i>Edit</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#"
+                        ><i class="fas fa-trash-alt"></i>Delete</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p class="card-text mt-2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                nobis commodi asperiores rem esse sunt, provident sint libero.
+                Dolor deleniti omnis minus. Doloribus dicta eligendi architecto
+                iste voluptate praesentium excepturi.
+              </p>
+              <hr />
+              <a href="#" class="btn btn-outline-success"
+                ><i class="far fa-thumbs-up"></i>Like</a
+              >
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="far fa-comment"></i>Comment
+              </button>
+              <hr />
+              <div class="d-flex">
+                <img
+                  class="profile-post-comment-pic align-self-start me-2"
+                  src="images/profile.jpg"
+                  alt="profile-photo"
+                />
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Your Comment"
+                ></textarea>
+                <div class="p-1">
+                  <a href="#">
+                    <i class="far fa-comment fa-2x"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="comments">
+              <div class="comment mb-3">
+                <div class="d-flex p-2">
+                  <img
+                    class="profile-post-comment-pic align-self-start"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="commented bg-light p-2 mx-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Voluptates reprehenderit quisquam quod reiciendis
+                      suscipit! Quam deserunt commodi, voluptatem ducimus minus
+                      officia nobis molestiae doloribus obcaecati mollitia,
+                      illum eos deleniti consectetur.
+                    </p>
+                  </div>
+                  <div class="p-2">
+                    <a class="link-primary" href="#"
+                      ><i class="far fa-thumbs-up fa-2x"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment mb-3">
+                <div class="d-flex p-2">
+                  <img
+                    class="profile-post-comment-pic align-self-start"
+                    src="images/profile.jpg"
+                    alt="profile-photo"
+                  />
+                  <div class="commented bg-light p-2 mx-2">
+                    <p>Hello this is small comment</p>
+                  </div>
+                  <div class="p-2">
+                    <a class="link-primary" href="#"
+                      ><i class="far fa-thumbs-up fa-2x"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="goUp" id="goUp">
+      <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

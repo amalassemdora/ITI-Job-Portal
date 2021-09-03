@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = @ViewBag.groupName;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/Group.css" />
+}
+
+<div class="container editProfile-page" id="forLanding">
+    <div class="row">
+        <div id="group-options" class="col-lg-4">
+            <div class="card groupSideBar">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="/Group/Index/@ViewBag.groupId">Group posts</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="/Group/Member/@ViewBag.groupId">Group Members</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @* Posts Area *@
+        <div class="col-lg-8">
+            <div id="post-area">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <input id="group-author" type="hidden" value="@ViewBag.groupId" />
+                        <input id="post-author" type="hidden" value="@User.Claims.First(c=>c.Type == ClaimTypes.NameIdentifier).Value" />
+                        <div>
+                            <textarea id="post-body" class="form-control" rows="4" placeholder="What's on your mind, Name?"></textarea>
+                        </div>
+                        <div class="d-flex flex-row-reverse">
+                            <button id="post-submit" class="btn btn-outline-success mt-3">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="posts">
+                @* All Posts here *@
+                <div id="post-section">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>
+
+
+@section Scripts{
+    <script>
+        $("#post-submit").on("click", function () {
+            // Check Text Area first
+            if ($("#post-body").val().trim() != "") {
+                if ($("#post-submit").html() == "Edit") {
+                    $.get("/Group/EditPost", { id: $("#carry-edit-post").val(), body: $("#post-body").val() }, function () {
+                        $("#post-body").val("");
+                        $("#post-submit").html("Post");
+                        let id = $("#post-author").val();
+                        $("#post-section").load("/User/LoadPost/" + id);
+                    });
+                } else {
+                    let id = $("#group-author").val();
+                    /*alert("AddPost");*/
+                    $.get("/Group/AddPost", { groupId: $("#group-author").val(), authorId: $("#post-author").val(), body: $("#post-body").val() },
+                        function (){
+                            $("#post-section").load("/Group/LoadPost/" + id);
+                            $("#post-body").val("");
+                    });
+                }
+            } else {
+                $("#post-body").val("");
+                $("#post-body").focus();
+            }
+
+        });
+
+        $(window).on("load", function () {
+            let id = $("#group-author").val();
+            $("#post-section").load("/Group/LoadPost/" + id);
+        });
+    </script>
+
+    <script src="~/Source/js/GroupScript.js"></script>
+}

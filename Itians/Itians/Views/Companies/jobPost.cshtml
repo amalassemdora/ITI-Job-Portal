@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@foreach (var jobpost in ViewBag.jobposts)
+{
+    <div class="card-body job-body">
+        <div class="card mb-3 card-job">
+            <div class="row g-1">
+                <div class="col-4 col-md-2">
+                    @if (jobpost.Company.Image == null)
+                    {
+                        <img class="img-fluid rounded-start job-pic" src="~/Source/images/profile.jpg" alt="profile-pic" />
+                    }
+                    else
+                    {
+                        <img class="img-fluid rounded-start job-pic" src="~/Attachments/Images/@jobpost.Company.Image" alt="profile-pic" />
+                    }
+                </div>
+                <div class="col-8 col-md-10">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <a href="#">
+                                <h3 class="card-text job-company">@jobpost.Company.CompanyUsername</h3>
+                            </a>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <li><a class="dropdown-jobpost" href="#"><i class="fas fa-edit"></i>Edit</a></li>
+                                    <li><a class="dropdown-jobpost" href="#"><i class="fas fa-trash-alt"></i>Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5 class="card-title job-title">Job Type : @jobpost.JobType.JobType1</h5>
+                        <span class="card-text job-address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            @jobpost.Counrty ,
+                            @jobpost.State  ,
+                            @jobpost.City  ,
+                            @jobpost.Street
+                        </span>
+                        <span class="card-text">
+                            <small class="text-success">
+                                <i class="far fa-clock"></i>
+                                @jobpost.CreatedData
+                            </small>
+                        </span>
+                        @if (jobpost.IsActive)
+                        {
+                            <span class="bg-success text-light p-1 rounded">Available</span>
+                        }
+                        else
+                        {
+                            <span class="bg-dark text-light p-1 rounded">Closed</span>
+
+                        }
+                    <div class="card-text job-desc">
+                        <p> <i> @jobpost.JobDesc</i></p>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-1">
+                <div class="col-12">
+
+                    <div class="m-2">
+                        <button class="btn-apply text-white bg-primary border-primary p-2">apply</button>
+                        <button class="btn-save text-primary border-primary p-2">save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,79 @@
+a {
+    text-decoration: none;
+}
+
+/* Nav bar */
+.profile-cover {
+object-fit: cover;
+height: 300px;
+width: 100%;
+}
+.submit-comment{
+    background-color:red;
+}
+.profile-pic {
+  object-fit:cover;
+  height:200px;
+  border-radius: 50%;
+  width: 200px;
+}
+.dropdown-menu {
+  right: 0;
+}
+
+.nameAndPic {
+  position: absolute;
+  top: 168px;
+  width: auto;
+}
+.information {
+  margin: auto;
+}
+.company-information {
+  overflow-y: scroll;
+  overflow-x: auto;
+  height: 500px;
+}
+
+.contact-icons {
+  position: relative;
+  top: 10px;
+}
+.company-page {
+  position: relative;
+}
+
+.goUp {
+  position: fixed;
+  bottom: 10px;
+  right: -50px;
+  transition: all ease-in 0.5s;
+}
+.goUpShow {
+  right: 10px;
+}
+.profile-post-pic {
+    object-fit: cover;
+    height: 50px;
+    border-radius: 50%;
+    width: 50px;
+}
+.profile-post-comment-pic {
+    object-fit: cover;
+    height: 40px;
+    border-radius: 50%;
+    width: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  #font-icon {
+    display: none;
+  }
+  #nav-pic {
+    display: none;
+  }
+}
+
+
+
+

@@ -1,0 +1,69 @@
+﻿@model SkillModel
+@{
+    ViewData["Title"] = "Admin Control - Skills";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body job-body">
+
+                <h3>SKILLS</h3>
+                <!-- add New skill -->
+                <a  asp-action="add" asp-controller="AdminSkill" class="btn btn-outline-primary">Add New Skill</a>
+
+                <!-- Table of skills -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            @*<th scope="col">ID</th>*@
+                            <th scope="col">Skill</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.skills != null)
+                        {
+                            @foreach (var item in ViewBag.skills)
+                            {
+                                <tr>
+                                    <th scope="row">@item.SkillName</th>
+                                   
+                                    <td>                                    
+                                        <a class="link-admin" asp-action="edit" asp-controller="AdminSkill" asp-route-id="@item.SkillId"><i class="fas fa-pencil-alt"></i></a>
+                                        <a class="link-admin" asp-action="delete" asp-controller="AdminSkill" asp-route-id="@item.SkillId"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+

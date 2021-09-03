@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Control - Companies";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="card-body job-body">
+                <h3>Approve New Company</h3>
+                @foreach (var item in ViewBag.company)
+                 {  @if (!(@item.IsApproved))
+                        {
+                            <div class="card mb-3 card-job">
+                                <div class="row g-0">
+                                    <div class="col-11">
+                                        <div class="card-body">
+                                            <h4 class="card-title company-name ">@item.CompanyUsername </h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <a class="link-admin" asp-action="details" asp-controller="AdminApproveCompany" asp-route-id="@item.CompanyId"><i class="fas fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                     } 
+                 }
+
+            </div>
+        </div>
+    </div>
+</section>>
+

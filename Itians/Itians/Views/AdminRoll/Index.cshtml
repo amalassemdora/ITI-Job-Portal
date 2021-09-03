@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Control - Roles";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active" aria-current="true" asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="card-body job-body">
+
+                <h3>User's Role</h3>
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Role</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in ViewBag.Role)
+                        {
+                            <tr>
+                                <th scope="row">@item.UserId</th>
+                                <td>@item.Username</td>
+                                <td>@item.Role.RoleName</td>
+                                <td>
+                                    <a asp-action="edit" asp-controller="AdminRoll" asp-route-id="@item.UserId" class="link-admin"><i class="fas fa-pencil-alt"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

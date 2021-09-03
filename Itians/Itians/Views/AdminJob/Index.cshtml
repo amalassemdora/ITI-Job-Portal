@@ -1,0 +1,65 @@
+﻿@model JobModel
+@{
+    ViewData["Title"] = "Admin Control - Jobs";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<section class="Jobs-main">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active" aria-current="true" asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="card-body job-body">
+                <h3>Job Title</h3>
+                <!-- add New job types -->
+                <a class="btn btn-outline-primary" asp-action="add" asp-controller="AdminJob">Add New Job</a>
+
+                <!-- Table of job types -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">job title</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         
+                        @foreach (var item in ViewBag.Job)
+                        {
+                            <tr>
+                                <td>@item.JobType1</td>
+                                <td>
+                                    <a asp-action="edit" asp-controller="AdminJob" asp-route-id="@item.JobTypeId" class="link-admin"><i class="fas fa-pencil-alt"></i></a>
+                                    <a asp-action="delete" asp-controller="AdminJob" asp-route-id="@item.JobTypeId" class="link-admin"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+

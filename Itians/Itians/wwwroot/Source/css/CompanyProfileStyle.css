@@ -1,0 +1,75 @@
+/* Nav bar */
+
+
+.profile-pic {
+  border-radius: 50%;
+  width: 50px;
+}
+
+.profile-cover {
+  height: 300px;
+  width: 100%;
+}
+.profile-pic2 {
+  border-radius: 50%;
+  width: 200px;
+}
+.dropdown-menu {
+  right: 0;
+}
+
+.nameAndPic {
+  position: absolute;
+  top: 168px;
+  width: auto;
+}
+/*Jobs */
+.Jobs-main .btn-apply,
+.Jobs-main .btn-save {
+  border-radius: 15px;
+  text-align: center;
+  margin: 10px;
+  width: 150px;
+}
+
+/*end Jobs*/
+.information {
+  margin-top: 5rem !important;
+}
+.contact-icons {
+  position: relative;
+  top: 10px;
+}
+.profile-pic-company {
+    object-fit: cover;
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+}
+.company-page {
+  position: relative;
+}
+.goUp {
+  position: fixed;
+  bottom: 10px;
+  right: -50px;
+  transition: all ease-in 0.5s;
+}
+.goUpShow {
+  right: 10px;
+}
+/*Media Query*/
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+  #font-icon {
+    display: none;
+  }
+
+}
+
+
+
+
+
+

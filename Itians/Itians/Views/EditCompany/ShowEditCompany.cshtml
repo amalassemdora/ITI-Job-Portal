@@ -1,0 +1,95 @@
+﻿@model EditCompany
+@{
+    ViewData["Title"] = "EditCompany - "+ViewBag.company.CompanyUsername;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<div class="container editProfile-page" id="forLanding">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#contact-info">Contact Information</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="nav-link link-primary" href="#about-us">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-3" id="contact-info">
+                <form asp-action="SaveContact" asp-controller="EditCompany" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="CompanyId" value="@ViewBag.company.CompanyId" />
+                    <input type="hidden" asp-for="CompanyUsername" value="@ViewBag.company.CompanyUsername" />
+                    <input type="hidden" asp-for="HiddenImage" value="@ViewBag.company.Image" />
+                    <input type="hidden" asp-for="HiddenCover" value="@ViewBag.company.Cover" />
+
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">Contact Information</h5>
+                        <div>
+                            <div class="mb-3">
+                                <label for="emailField" class="form-label">Email address</label>
+                                <input type="email"
+                                       class="form-control"
+                                       id="emailField"
+                                       placeholder="name@example.com"
+                                       asp-for="Email" value=@ViewBag.company.Email />
+                            </div>
+                            <div class="mb-3">
+                                <label for="webUrlField" class="form-label">Website Url</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="webUrlField"
+                                       placeholder="www.example.com"
+                                       asp-for="WebsiteUrl" value=@ViewBag.company.WebsiteUrl />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="addressField" class="form-label">Address</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="addressField"
+                                       placeholder="Egypt, Menofia, Shebin Alkom"
+                                       asp-for="Adress" value=@ViewBag.company.Adress />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="profileFile">Profile Photo</label>
+                                <input type="file" class="form-control" id="profileFile" name="Image" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="coverFile">Profile Cover</label>
+                                <input type="file" class="form-control" id="coverFile" name="Cover" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card mb-3" id="about-us">
+                <form asp-action="SaveAboutUs" method="POST">
+                    <input type="hidden" asp-for="CompanyId" value="@ViewBag.company.CompanyId" />
+                    <div class="card-body">
+                        <h5 class="card-title border-bottom">About Us</h5>
+                        <div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="aboutMeField" name="Description">@ViewBag.company.Description</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="establishField">Establish Data</label>
+                                <input type="date"
+                                       class="form-control"
+                                       id="establishField" name="EstablishDate"
+                                       value=@ViewBag.company.EstablishDate.ToString("yyyy-MM-dd") />
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>

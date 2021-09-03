@@ -1,0 +1,89 @@
+﻿@model Itians.Models.Group
+@{
+    ViewData["Title"] = "add";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<div class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser" tabindex="-1" aria-disabled="true">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany" tabindex="-1" aria-disabled="true">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body job-body">
+                <h3>Add Group</h3>
+                <!--Add group -->
+                <form method="post">
+                    <table class="table">
+                        <tbody>
+                            <tr hidden>
+                                <th scope="row">ID :</th>
+                                <td><input type="text" asp-for="GroupId" /></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Name : </th>
+                                <td>
+                                    <input type="text" asp-for="GroupName" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Description : </th>
+                                <td>
+                                    <textarea asp-for="GroupDesc" type="text" class="group-edit" cols="80" rows="5"></textarea>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="GroupAdmins">Admin 1 : </label> </th>
+                                <td>
+                                    <select asp-for="GroupAdmins" asp-items="ViewBag.user"> </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="GroupAdmins">Admin 2 : </label> </th>
+                                <td>
+                                    <select asp-for="GroupAdmins" asp-items="ViewBag.user"> </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="GroupAdmins">Admin 3 : </label> </th>
+                                <td>
+                                    <select asp-for="GroupAdmins" asp-items="ViewBag.user"> </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row"><input type="Submit" class="btn btn-success" value="Save"></th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

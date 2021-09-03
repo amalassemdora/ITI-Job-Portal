@@ -1,0 +1,104 @@
+﻿@model Itians.Models.Company
+@{
+    ViewData["Title"] = "Admin Control";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="card-body job-body">
+
+                <h3>User's Role</h3>
+                <form method="post">
+                    <table class="table">
+                        <tbody>
+                            <tr hidden>
+                                <th scope="row"><label asp-for="CompanyId">Name :</label></th>
+                                <td><input hidden class="form-control" type="text" asp-for="CompanyId"></td>
+                            </tr>
+                            <tr hidden>
+                                <th scope="row"><label asp-for="CompanyTypeId">Name :</label></th>
+                                <td><input hidden class="form-control" type="text" asp-for="CompanyTypeId"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row"><label asp-for="CompanyUsername">Name :</label></th>
+                                <td><input readonly class="form-control" type="text" asp-for="CompanyUsername"></td>
+                            </tr>
+                            <tr hidden>
+                                <th scope="row"><label asp-for="RoleId">Role : </label></th>
+                                <td>
+                                    <input asp-for="RoleId" class="form-control">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="Email">Email: </label> </th>
+                                <td><input readonly class="form-control" type="text" asp-for="Email"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="EstablishDate">Establish Date:</label> </th>
+                                <td><input readonly class="form-control" type="text" asp-for="EstablishDate"></td>
+                            </tr>
+                            <tr hidden>
+                                <th scope="row"><label hidden asp-for="WebsiteUrl">NationalId:</label> </th>
+                                <td><input hidden class="form-control" type="text" class="form-control" asp-for="WebsiteUrl"></td>
+                            </tr>
+                            <tr hidden>
+                                <th scope="row"><label hidden asp-for="Password">RoleId:</label> </th>
+                                <td><input hidden class="form-control" type="text" class="form-control" asp-for=" Password"></td>
+                            </tr>
+
+
+                            <tr>
+                                <th scope="row"><label asp-for="License">License:</label> </th>
+                                <td><embed src="~/Attachments/Licenses/@Model.License" width="800px" height="1080px" /> </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="CommentFromAdmin">Comment:</label> </th>
+                                <td><textarea asp-for="CommentFromAdmin" type="text" id="Comment" cols="83" rows="4"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label asp-for="IsApproved">Approve:</label> </th>
+                                <td>
+                                    <input type="text" asp-for="IsApproved">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><input type="Submit" class="btn btn-success" value="Save"></th>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="Index" asp-controller="AdminRoll">Cancel</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

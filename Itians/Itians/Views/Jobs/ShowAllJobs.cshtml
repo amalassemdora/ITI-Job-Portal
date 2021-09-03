@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Jobs";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/Job.css" />
+}
+
+<div class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" href="../html/index.html">Jobs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body job-body">
+                <h3>All Jobs</h3>
+                @foreach (var item in ViewBag.jobs)
+                {
+                    <div class="card mb-3 card-job">
+                        <div class="row g-0">
+                            <div class="col-2">
+                                @if (item.Company.Image == null)
+                                {
+                                    <img class="img-fluid rounded-start" src="~/Source/images/profile.jpg" alt="profile-pic" />
+                                }
+                                else
+                                {
+                                    <img class="img-fluid rounded-start" src="~/Attachments/Images/@item.Company.Image" alt="profile-pic" />
+                                }
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a class="card-title job-title" href="#">@item.Title</a><br>
+                                    <span class="card-text job-company">@item.Company.CompanyUsername</span><br>
+                                    <span class="card-text job-address">@item.City,@item.State,@item.Counrty </span>
+                                    <span class="card-text job-type"> , @item.JobType.JobType1</span>
+                                    <p class="card-text"><small class="text-success">@item.CreatedData</small></p>
+                                    <p> <i> @item.JobDesc</i></p>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <a href="/Jobs/savejob/@item.IdJob"><i class="fas fa-bookmark" style="transform: scale(1.5); "></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="goUp" id="goUp">
+    <a href="#forLanding"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+</div>
+
+@section Scripts{
+    <script src="~/Source/js/JobScripts.js"></script>
+}

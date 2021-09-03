@@ -1,0 +1,73 @@
+﻿@model Itians.Models.Skill
+@{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/Source/css/AdminStyle.css" />
+}
+
+<section class="Jobs-main align-content-center">
+    <div class="container">
+        <div class="card ">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminApproveUser">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="AdminApproveCompany">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminRoll" tabindex="-1" aria-disabled="true">User Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" asp-action="Index" asp-controller="AdminSkill" tabindex="-1" aria-disabled="true">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-action="Index" asp-controller="AdminJob" tabindex="-1" aria-disabled="true">Jobs</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="card-body job-body">
+
+                <h3>Edit SKILLS</h3>
+                <!--Edit skills -->
+                <form method="post">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <label asp-for="SkillId">Id:</label>
+                                    <input hidden asp-for="SkillId" />
+                                </th>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <label asp-for="SkillName">Skill:</label>
+                                </th>
+                                <td>
+                                    <input type="text" class="skill-edit" asp-for="SkillName">
+                                    <span class="text-danger" asp-validation-for="SkillName"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><input type="Submit" class="btn btn-success" value="Edit"></th>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="Index" asp-controller="AdminSkill">Cancel</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,97 @@
+a {
+    text-decoration: none;
+}
+#forLanding {
+    margin-top: 100px;
+}
+/*post-pic*/
+.profile-pic {
+    object-fit: cover;
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+}
+.profile-post-pic {
+    object-fit: cover;
+    height: 50px;
+    border-radius: 50%;
+    width: 50px;
+}
+.group-member-profile-pic {
+    object-fit: cover;
+    height: 50px;
+    border-radius: 50%;
+    width: 50px;
+}
+.dropdown-menu {
+    right: 0;
+}
+
+.profile-post-comment-pic {
+    object-fit: cover;
+    height: 40px;
+    border-radius: 50%;
+    width: 40px;
+}
+
+.goUp {
+    position: fixed;
+    bottom: 10px;
+    right: -50px;
+    transition: all ease-in 0.5s;
+}
+.goUpShow {
+  right: 10px;
+}
+
+
+/*group*/
+.groupSideBar {
+  position: fixed;
+  width: 25% !important;
+}
+/*Media Query*/
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+  .groupSideBar {
+    position: static;
+    width: auto !important;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+  .groupSideBar {
+    position: static;
+    width: auto !important;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+  .groupSideBar {
+    position: static;
+    width: auto !important;
+  }
+    
+}
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+  .groupSideBar {
+    position: fixed;
+    width: 25% !important;
+  }
+  #group-options{
+      margin-top:48px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+  .groupSideBar {
+    position: fixed;
+    width: 25% !important;
+  }
+}
